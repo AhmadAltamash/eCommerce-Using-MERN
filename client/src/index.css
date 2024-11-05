@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+html,body{
+    height:100vh;
+    width:100%;
+}
+.App{
+    max-width: 1230px;
+    min-height: 100vh;
+    box-shadow: 0px 0px 35px #eee;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+a{
+    color: #000;
+    text-decoration: none;
+}
+ul li{
+    list-style: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: .3s;
+    font-size: 1.2em;
+}
+ul li:hover{
+    opacity: 1;
+}
+button {
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+}
+.Home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Home h2{
+    font-size: 2.5em;
+    text-transform: capitalize;
+    color: rgb(0, 191, 255);
+}

@@ -1,0 +1,44 @@
+header{
+    min-height: 70px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+header.logo{
+    flex:1;
+}
+header a{
+    text-transform: uppercase;
+    color: #000;
+}
+header ul{
+    display: flex;
+    gap:1.5em;
+}
+.menu{
+    display: none;
+}
+.cart-icon{
+    position: relative;
+}
+.cart-icon span{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: crimson;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 600;
+    width: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cart{
+    font-size: 1.3em;
+}
