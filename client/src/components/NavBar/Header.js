@@ -1,28 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { BsFillMenuButtonFill } from "react-icons/bs";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaCartArrowDown } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import './header.css';
+import { GlobalState } from '../../GlobalState';
 
 function Header() {
-    const [cartCount, setCartCount] = useState(0);
-
-    useEffect(() => {
-        const updateCartCount = () => {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            setCartCount(cart.length);
-        };
-
-        updateCartCount();
-
-       
-        window.addEventListener('storage', updateCartCount);
-
-        return () => {
-            window.removeEventListener('storage', updateCartCount);
-        };
-    }, []);
+    const state = useContext(GlobalState);
+    const [isLogged, setIsLogged] = state.UserAPI.isLogged;
+    const [isAdmin, setIsAdmin] = state.UserAPI.isAdmin;
 
     return (
         <header>
@@ -35,15 +22,25 @@ function Header() {
                 </h1>
             </div>
             <ul>
+                {isAdmin && (
+                    <li><Link to='/admin'>Admin Dashboard</Link></li>
+                )}
                 <li><Link to='/product'>Products</Link></li>
-                <li><Link to='/login'>Login Or Register</Link></li>
+                {isLogged ? (
+                    <>
+                        <li><Link to='/profile'>Profile</Link></li>
+                        <li><Link to='/logout'>Logout</Link></li>
+                    </>
+                ) : (
+                    <li><Link to='/login'>Login or Register</Link></li>
+                )}
                 <li>
                     <IoCloseSharp className='menu' />
                 </li>
             </ul>
 
             <div className='cart-icon'>
-                <span>{cartCount}</span> {/* Display the cart count */}
+                <span>0</span>
                 <Link to='/cart'><FaCartArrowDown className='cart' /></Link>
             </div>
         </header>

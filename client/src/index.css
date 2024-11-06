@@ -44,3 +44,15 @@ button {
     text-transform: capitalize;
     color: rgb(0, 191, 255);
 }
+.btn{
+    background-color: #514c4c;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    width: max-content;
+    padding: 15px 45px;
+    color: white;
+    font-weight: bold;
+}
