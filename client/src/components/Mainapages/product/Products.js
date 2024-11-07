@@ -9,12 +9,13 @@ function Products() {
 
   const state = useContext(GlobalState)
   const [products] = state.ProductAPI.products
-  console.log(state)
+  const [isAdmin] = state.UserAPI.isAdmin
+
   return (
     <div className='product'>
   {products.length > 0 ? (
     products.map((product, index) => {
-      return <ProductList key={product.id || product._id || index} product={product} />;
+      return <ProductList key={product.id || product._id || index} product={product} isAdmin={isAdmin} />;
     })
   ) : (
     <p>Loading products...</p>

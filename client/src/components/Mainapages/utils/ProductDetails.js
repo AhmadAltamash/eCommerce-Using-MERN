@@ -9,6 +9,7 @@ function ProductDetails() {
     const state = useContext(GlobalState);
     const [products] = state.ProductAPI.products;
     const [detailProduct, setDetailProduct] = useState([]);
+    const addCart = state.UserAPI.addCart
 
     useEffect(() => {
         if (params) {
@@ -20,12 +21,6 @@ function ProductDetails() {
         }
     }, [params, products]);
 
-    const addToCart = (product) => {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(product);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert('Product added to cart');
-    };
 
     return (
         <div className='detail'>
@@ -37,9 +32,9 @@ function ProductDetails() {
                 </div>
                 <span>₹{detailProduct.price}</span>
                 <p>{detailProduct.description}</p>
-                <p>{detailProduct.content}</p>
+                <p>{detailProduct.contents}</p>
                 <p>Sold: {detailProduct.sold}</p>
-                <button onClick={() => addToCart(detailProduct)} className='cart'>Buy Now</button>
+                <button onClick={() => addCart(detailProduct)} className='cart'>Buy Now</button>
             </div>
         </div>
     );

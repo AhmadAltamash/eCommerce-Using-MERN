@@ -2,7 +2,7 @@
     width: 100%;
 }
 .shopping-cart h2{
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
     font-size: 1.7em;
 }
@@ -26,7 +26,12 @@
 .cart-item p{
     text-transform: uppercase;
     font-size: 1.1em;
-    margin-top: 25px;
+    margin-top: 10px;
+    text-align: left;
+}
+.row{
+    display: flex;
+    flex-direction: column;
 }
 button{
     background-color: #555;
@@ -35,7 +40,7 @@ button{
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    width: 100px;
+    width: max-content;
     padding: 15px 45px;
     color: white;
 }
@@ -50,4 +55,8 @@ button.btn{
     padding: 15px 45px;
     color: white;
     font-weight: bold;
+}
+.button{
+    display: flex;
+    justify-content: space-around;
 }

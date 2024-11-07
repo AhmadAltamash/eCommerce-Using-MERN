@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-
+import './form.css'
 
 function Login() {
 
@@ -28,18 +28,21 @@ function Login() {
   }
 
   return (
-    <div>
-      <form onSubmit={loginHandler}>
-        <input type='email' name='email' required placeholder='enter email' value={user.email} onChange={onChangeInput}/>
-        <input type='password' name='password' required placeholder='enter password' value={user.password} onChange={onChangeInput}/>
-
-        
-
-        <div>
-          <button type='submit' >Login</button>
-          <Link to='/register' className='btn'>Register</Link>
+    <div className='container'>
+      <div className="form-box">
+        <form className="form" onSubmit={loginHandler}>
+            <span className="title">Login</span>
+            <span className="subtitle">Login to your account with your email.</span>
+            <div className="form-container">
+              <input type="email" name='email' className="input" required placeholder="Email" value={user.email} onChange={onChangeInput}/>
+              <input type="password" name='password' className="input" required placeholder="Password" value={user.password} onChange={onChangeInput}/>
+            </div>
+            <button type='submit'>Login</button>
+        </form>
+        <div className="form-section">
+          <p>Create a free account with your email. <Link to='/register'>Register</Link> </p>
         </div>
-      </form>
+      </div>
     </div>
   )
 }

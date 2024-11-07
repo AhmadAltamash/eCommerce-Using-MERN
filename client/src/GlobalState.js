@@ -3,16 +3,18 @@ import ProductAPI from "./API/ProductAPI";
 import axios from 'axios';
 import UserAPI from "./API/UserAPI";
 
+
 export const GlobalState = createContext();
 
 export const DataProvider = ({ children }) => {
     const [token, setToken] = useState(false);
+    const productAPI = ProductAPI();
+    const userAPI = UserAPI(token);
 
     const refreshToken = async () => {
         try {
             const response = await axios.post('/user/refresh_token');
             setToken(response.data.accessToken);
-            console.log("Tokens received and stored", response.data.accessToken);
         } catch (error) {
             console.error('Error refreshing tokens:', error);
         }
@@ -27,8 +29,8 @@ export const DataProvider = ({ children }) => {
 
     const state = {
         token: [token, setToken],
-        ProductAPI: ProductAPI(),
-        UserAPI: UserAPI(token)
+        ProductAPI: productAPI,
+        UserAPI: userAPI,
     };
 
     return (

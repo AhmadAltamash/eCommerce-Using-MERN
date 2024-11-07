@@ -1,29 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { GlobalState } from '../GlobalState';
 
 function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [cart, setCart] = useState([]);
+
+    const addCart = async (product) => {
+        if (!isLogged) return alert("Please log in first.");
+
+        const check = cart.every((item) => item._id !== product._id);
+
+        if (check) {
+            setCart([...cart, { ...product, quantity: 1 }]);
+        } else {
+            alert("This product is already in the cart.");
+        }
+    };
+
     useEffect(() => {
         if (token) {
             const getUser = async () => {
                 try {
-                    console.log("Token used in request:", token);
                     const res = await axios.get('/user/information', {
-                        headers: { Authorization: `Bearer ${token}` }
+                        headers: { Authorization: `Bearer ${token}` },
                     });
-
-                    console.log("Response data:", res.data); 
-
                     setIsLogged(true);
-                    res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
-                } catch (error) {
-                    console.error("Error fetching user data:", error);
-                    if (error.response) {
-                        console.log("Error response data:", error.response.data);
-                    } else {
-                        console.log("Error message:", error.message);
-                    }
+                    setIsAdmin(res.data.role === 1);
+                } catch (err) {
+                    console.error(err);
                 }
             };
             getUser();
@@ -32,7 +38,9 @@ function UserAPI(token) {
 
     return {
         isLogged: [isLogged, setIsLogged],
-        isAdmin: [isAdmin, setIsAdmin]
+        isAdmin: [isAdmin, setIsAdmin],
+        cart: [cart, setCart],
+        addCart,
     };
 }
 
