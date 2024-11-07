@@ -2,7 +2,12 @@
   "name": "ecommerce-mern-root",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"cd server && yarn start\" \"cd client && yarn start\""
+    "start": "concurrently \"yarn start-server\" \"yarn start-client\"",
+    "start-server": "cd server && yarn install && yarn start",
+    "start-client": "cd client && yarn install && yarn start",
+    "build": "concurrently \"yarn build-server\" \"yarn build-client\"",
+    "build-server": "cd server && yarn install && yarn build",
+    "build-client": "cd client && yarn install && yarn build"
   },
   "dependencies": {
     "concurrently": "^9.1.0",
