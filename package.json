@@ -5,7 +5,7 @@
     "install-client": "cd client && yarn install",
     "install-server": "cd server && yarn install",
     "build-client": "cd client && yarn build",
-    "start": "cd server && yarn start && cd ../client && yarn start"
+    "start": "concurrently \"cd server && yarn start\" \"cd client && yarn start\""
   },
   "dependencies": {
     "concurrently": "^9.1.0",
