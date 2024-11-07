@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { GlobalState } from '../GlobalState';
+
 
 function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false);

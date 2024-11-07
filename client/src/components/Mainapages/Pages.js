@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Product from './product/Products';
 import Cart from './cart/ShoppingCart';
 import Login from './login/Login';
@@ -8,7 +8,6 @@ import ProductDetails from './utils/ProductDetails';
 import Home from '../Homepage/Home';
 import Checkout from './payment/Checkout';
 import Profile from './profile/Profile';
-import { GlobalState } from '../../GlobalState';
 
 function Pages() {
 
