@@ -2,10 +2,11 @@
   "name": "ecommerce-mern-root",
   "version": "1.0.0",
   "scripts": {
-    "start-server": "cd server && yarn install && yarn start"
-  },
-  "dependencies": {
-    "concurrently": "^9.1.0",
-    "ecommerce-mern-root": "file:"
+    "install-client": "cd client && yarn install",
+    "install-server": "cd server && yarn install",
+    "build-client": "cd client && yarn build",
+    "start-server": "cd server && yarn start",
+    "start": "npm run install-client && npm run install-server && npm run build-client && npm run start-server"
   }
 }
+
