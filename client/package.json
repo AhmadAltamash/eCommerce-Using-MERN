@@ -60,7 +60,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "https://ecommerce-using-mern-8tpn.onrender.com",
   "devDependencies": {
     "eslint-webpack-plugin": "^4.2.0"
   }
